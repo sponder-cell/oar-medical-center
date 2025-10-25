@@ -108,7 +108,7 @@ function App() {
 
         <div className='about-text'>
           <div className="about-hd">
-            <h4>About Us</h4>
+            <h4 className='extra-head'>About Us</h4>
                       <h3>Dedicated to Your Health, Committed to Your Care</h3>
 
           </div>
@@ -132,7 +132,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
     <section id='why'>
       <div className="why-intro">
-        <h4>Why Choose Us</h4>
+        <h4 className='extra-head'>Why Choose Us</h4>
         <h3>Compassionate Care You Can Trust</h3>
         
       </div>
@@ -186,7 +186,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
     <section id='services'>
       <div className='services-intro'>
-        <h4>Our Services</h4>
+        <h4 className='extra-head'>Our Services</h4>
         <h3>Comprehensive Care for Every Stage of Life</h3>
         <p>At oar medical center, we offer a wide range of healthcare services designed to meet your unique needs. From preventive care to advanced diagnostics and treatment, our team is dedicated to keeping you and your family healthy.</p>
 
@@ -274,7 +274,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
     <section id="doctors">
       <div className="doctors-intro-grid">
         <div className="doctors-intro">
-          <h4>Our Doctors</h4>
+          <h4 className='extra-head'>Our Doctors</h4>
           <h3>Experienced. Compassionate. Dedicated to Your Health.</h3>
           <p>At oar Medical Center, our team of qualified and experienced doctors is committed to providing exceptional healthcare with compassion and expertise.
 Each member of our medical staff brings years of experience, advanced training, and a deep dedication to patient well-being.
@@ -421,7 +421,7 @@ We believe that great care starts with great people — professionals who listen
 
     <section id="testimonial">
       <div className="testimonial-intro">
-        <h4>Our Reviews</h4>
+        <h4 className='extra-head'>Our Reviews</h4>
         <h3>What Our Patients Say</h3>
         <p>At OAR Medical Clinic, our patients are at the heart of everything we do.
 Here’s what some of them have to say about their experience with our team.</p>

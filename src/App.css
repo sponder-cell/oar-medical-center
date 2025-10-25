@@ -10,25 +10,30 @@ body{
   font-family: "ubuntu";
 
 }
+.extra-head{
+  background-color: #E0E0E0;
+  padding: 10px;
+  color: red;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
 nav{
   background-color: white;
   position: fixed;
-  margin: 10px;
   width:100%;
-  border-radius: 10px;
-  position: absolute;
+  /* border-radius: 10px;  position: absolute;
     background: rgba(255, 255, 255, 0.3); 
   backdrop-filter: blur(12px); 
   -webkit-backdrop-filter: blur(12px); 
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
   z-index: 1000;
+
 
 }
 nav ul{
   float: right;
-}
-.logo{
-  margin-left: 10px;
 }
 nav ul li{
   display: inline-block;
@@ -40,6 +45,9 @@ nav ul li a{
   color: black;
   text-decoration: none;
   font-size: 1.1rem;
+}
+nav ul li a:hover{
+  color: red;
 }
 
 .menu{
@@ -587,32 +595,39 @@ textarea{
 
   .menu{
     display: block;
-    font-size: 50px;
+    font-size: 60px;
     
+  }
+  p{
+    font-size: 1rem;
   }
   nav{
     width:100%;
-    position: fixed;
-  }
-  .logo{
-    margin-left:initial;
+    padding:  15px 0;
+    text-align: left;
+    z-index: 100000;
   }
   nav ul{
-    position: absolute;
-    right: 0;
-    background-color: brown;
-    transform: translatex(1000px);
+    position:fixed;
+    width:100%;
+    text-align: center;
+    background-color:#E0E0E0;
+    transform: translatey(-1000px);
     transition: all 0.3s ease-in-out;
+    z-index: 100;
 
 
     
   }  
   nav ul li{
     display: block;
+    line-height: 40px;
   }
     nav ul li a{
-    color: white;
-  }
+      border-bottom: solid thin white;
+      color: red;
+      width: 100%;
+    }
 
 
   ul.responsive{
@@ -675,8 +690,9 @@ textarea{
   margin-bottom: 30px;
 }
 .doctors-intro-img img{
-  width: 300px;
+  width: 350px;
   border-radius: 10px;
+  margin-bottom: 50px;
 }
 .doctors-intro{
   margin-bottom: 30px;

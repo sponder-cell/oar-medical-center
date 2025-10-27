@@ -1,5 +1,19 @@
 import './App.css'
-import { useRef } from "react"
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
+import SplitText from 'gsap/SplitText';
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+
+
+
+import { useRef, useEffect } from "react"
 import { BiMenuAltRight } from "react-icons/bi";
 import { FaUserClock } from "react-icons/fa6";
 import { FaSyringe } from "react-icons/fa";
@@ -29,6 +43,54 @@ import { FreeMode } from 'swiper/modules';
 
 function App() {
 
+  useEffect(() => {
+    const aboutText = new SplitText('.about-paragraph', {type: "lines"});
+
+    const Header = new SplitText('.head', {type : "words"});
+
+    gsap.from(aboutText.lines, {
+      scrollTrigger: {
+        trigger: '.about-paragraph',
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+
+      }, 
+      opacity:0,
+      stagger:0.1,
+      duration:1,
+      y:40,
+            ease:"power2.out"
+
+    })
+
+    gsap.from(Header.words, {
+            scrollTrigger: {
+        trigger: '.head',
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+
+      }, 
+      opacity:0,
+      stagger:0.06,
+      duration:1,
+      y:40,
+            ease:"power2.out"
+
+
+
+    })
+
+
+
+
+    AOS.init({
+      duration:1000,
+      once:false
+      
+    })
+
+  },[])
+
   const showRef = useRef(null);
 
   const showNav = () => {
@@ -44,15 +106,15 @@ function App() {
 
     <section id='hero'>
                   <nav>
-      <img className='logo' src="oar.png" alt="" />
+      <img data-aos = "fade-right" className='logo' src="oar.png" alt="" />
     
       <ul ref={showRef}>
-        <li><a onClick={CloseNav} href="">Home</a></li>
-        <li><a onClick={CloseNav} href="">About</a></li>
-        <li><a onClick={CloseNav} href="">Services</a></li>
-        <li><a onClick={CloseNav} href="">Doctors</a></li>
-        <li><a onClick={CloseNav} href="">Appointment</a></li>
-        <li><a onClick={CloseNav} href="">Contact</a></li>
+        <li><a onClick={CloseNav} href="#home">Home</a></li>
+        <li><a onClick={CloseNav} href="#about">About</a></li>
+        <li><a onClick={CloseNav} href="#services">Services</a></li>
+        <li><a onClick={CloseNav} href="#doctors">Doctors</a></li>
+        <li><a onClick={CloseNav} href="#testimonial">Testimonial</a></li>
+        <li><a onClick={CloseNav} href="#contact">Contact</a></li>
      
       </ul>
       <BiMenuAltRight onClick={showNav} className='menu' />
@@ -61,14 +123,14 @@ function App() {
       <div className='hero'>
 
       <div className='hero-intro'>
-        <h1>Compassionate Care, <span>Modern Medicine</span></h1>
+        <h1 data-aos = "fade-up">Compassionate Care, <span>Modern Medicine</span></h1>
         
-        <p>At oar medical clinic, we provide quality healthcare with a personal touch — combining advanced medical expertise and genuine compassion to keep you and your family healthy.</p>
+        <p data-aos = "fade-up">At oar medical clinic, we provide quality healthcare with a personal touch — combining advanced medical expertise and genuine compassion to keep you and your family healthy.</p>
       </div>
 
       <div className='hero-button'>
-        <button className="appointment">Book Appointment</button>
-        <button className='contact-us'> Contact Us</button>
+        <button data-aos = "fade-right" className="appointment">Book Appointment</button>
+        <button data-aos = "fade-left" data-aos-duration="4000" className='contact-us'> Contact Us</button>
       </div>
 
 
@@ -103,37 +165,29 @@ function App() {
     <section id='about'>
       <div className='about-grid'>
         <div className='img-div'>
-          <img src="about-img.jpg" alt="" />
+          <img data-aos= "fade-right" src="about-img.jpg" alt="" />
         </div>
 
-        <div className='about-text'>
+        <div data-aos= "fade-left"  className='about-text'>
           <div className="about-hd">
-            <h4 className='extra-head'>About Us</h4>
-                      <h3>Dedicated to Your Health, Committed to Your Care</h3>
+            <h4 data-aos= "fade-up" data-aos-duration="1500" className='extra-head'>About Us</h4>
+                      <h3 data-aos= "fade-up" data-aos-duration="2000" >Dedicated to Your Health, Committed to Your Care</h3>
 
           </div>
-          <p>At oar medical clinic, we believe that quality healthcare begins with compassion. Our team of experienced medical professionals is committed to providing personalized care using modern medical practices and state-of-the-art facilities.
+          <p className='about-paragraph'>At oar medical clinic, we believe that quality healthcare begins with compassion. Our team of experienced medical professionals is committed to providing personalized care using modern medical practices and state-of-the-art facilities.
 
 From routine checkups to advanced treatments, we focus on delivering reliable, patient-centered care in a comfortable and welcoming environment. Every visit is guided by our promise — to treat every patient with respect, empathy, and excellence.
 
 Your health is our priority — today and always.</p>
 
-<div className='mission-vision'></div>
-<h3>Mission And Vision Statement</h3>
-<p>Our goal and thoughts
-To provide world-class healthcare services to all age groups by dedicated and compassionate staff for improvement in the health status of our community.
-
-To provide prompt medical services at all times to all cadres of clients irrespective of financial or social status. To be the healthcare facility of choice for routine community-based family health services</p>
-
-        </div>
-
+</div>
       </div>
     </section>
 
     <section id='why'>
       <div className="why-intro">
         <h4 className='extra-head'>Why Choose Us</h4>
-        <h3>Compassionate Care You Can Trust</h3>
+        <h3 className='head' data-aos= "fade-up" data-aos-duration="2000" >Compassionate Care You Can Trust</h3>
         
       </div>
       <div className='why-grid'>
@@ -186,14 +240,14 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
     <section id='services'>
       <div className='services-intro'>
-        <h4 className='extra-head'>Our Services</h4>
-        <h3>Comprehensive Care for Every Stage of Life</h3>
-        <p>At oar medical center, we offer a wide range of healthcare services designed to meet your unique needs. From preventive care to advanced diagnostics and treatment, our team is dedicated to keeping you and your family healthy.</p>
+        <h4 data-aos= "fade-up" data-aos-duration="900"  className='extra-head'>Our Services</h4>
+        <h3 className='head' data-aos= "fade-up" >Comprehensive Care for Every Stage of Life</h3>
+        <p data-aos= "fade-up" >At oar medical center, we offer a wide range of healthcare services designed to meet your unique needs. From preventive care to advanced diagnostics and treatment, our team is dedicated to keeping you and your family healthy.</p>
 
       </div>
 
       <div className="services-grid">
-        <div className="services-card">
+        <div data-aos= "fade-up"   className="services-card">
           <div className="services-img">
             <img src="diabetes.jpg" alt="" />
           </div>
@@ -203,7 +257,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
           </div>
         </div>
-        <div className="services-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="services-card">
           <div className="services-img">
             <img src="child-care.jpg" alt="" />
           </div>
@@ -213,7 +267,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
           </div>
 
         </div>
-        <div className="services-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="services-card">
           <div className="services-img">
             <img src="radiography.jpg" alt="" />
 
@@ -225,7 +279,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
         </div>
 
-        <div className="services-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="services-card">
           <div className="services-img">
             <img src="surgery.jpg" alt="" />
           </div>
@@ -236,7 +290,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
           </div>
 
         </div>
-        <div className="services-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="services-card">
           <div className="services-img">
             <img src="diagnostic.jpg" alt="" />
           </div>
@@ -248,7 +302,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
         </div>
 
-        <div className="services-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="services-card">
           <div className="services-img">
             <img src="consult.jpg" alt="" />
           </div>
@@ -265,7 +319,7 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
       </div>
 
-      <div className='services-button'>
+      <div data-aos= "fade-left" data-aos-duration="2000"  className='services-button'>
         <button>Show All</button>
 
       </div>
@@ -273,9 +327,9 @@ To provide prompt medical services at all times to all cadres of clients irrespe
 
     <section id="doctors">
       <div className="doctors-intro-grid">
-        <div className="doctors-intro">
-          <h4 className='extra-head'>Our Doctors</h4>
-          <h3>Experienced. Compassionate. Dedicated to Your Health.</h3>
+        <div data-aos= "fade-right" data-aos-duration="900"  className="doctors-intro">
+          <h4 data-aos= "fade-up" data-aos-duration="2000"  className='extra-head'>Our Doctors</h4>
+          <h3 className='head' data-aos= "fade-up" data-aos-duration="2000" >Experienced. Compassionate. Dedicated to Your Health.</h3>
           <p>At oar Medical Center, our team of qualified and experienced doctors is committed to providing exceptional healthcare with compassion and expertise.
 Each member of our medical staff brings years of experience, advanced training, and a deep dedication to patient well-being.
 
@@ -288,7 +342,7 @@ We believe that great care starts with great people — professionals who listen
 </div>
         </div>
 
-        <div className='doctors-intro-img'>
+        <div data-aos= "fade-left"  className='doctors-intro-img'>
           <img src="doctors-intro.jpg" alt="" />
 
         </div>
@@ -421,13 +475,13 @@ We believe that great care starts with great people — professionals who listen
 
     <section id="testimonial">
       <div className="testimonial-intro">
-        <h4 className='extra-head'>Our Reviews</h4>
-        <h3>What Our Patients Say</h3>
-        <p>At OAR Medical Clinic, our patients are at the heart of everything we do.
+        <h4 data-aos= "fade-up" data-aos-duration="900"  className='extra-head'>Our Reviews</h4>
+        <h3 className='head' data-aos= "fade-up" data-aos-duration="2000" >What Our Patients Say</h3>
+        <p data-aos= "fade-up" data-aos-duration="2000" >At OAR Medical Clinic, our patients are at the heart of everything we do.
 Here’s what some of them have to say about their experience with our team.</p>
       </div>
       <div className='testimonial-grid'>
-        <div className="testimonial-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="testimonial-card">
           <div className="testimonial-info">
             <p>“The doctors here truly care about their patients. I was treated with kindness and professionalism from start to finish. I highly recommend OAR Medical Clinic to anyone seeking quality healthcare.”</p>
 
@@ -444,7 +498,7 @@ Here’s what some of them have to say about their experience with our team.</p>
 
           </div>
         </div>
-        <div className="testimonial-card middle">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="testimonial-card middle">
           <div className="testimonial-info">
             <p>“From the receptionist to the nurses and doctors, everyone was so welcoming and attentive. They made me feel comfortable and confident about my treatment.”</p>
 
@@ -461,7 +515,7 @@ Here’s what some of them have to say about their experience with our team.</p>
 
           </div>
         </div>
-        <div className="testimonial-card">
+        <div data-aos= "fade-up" data-aos-duration="2000"  className="testimonial-card">
           <div className="testimonial-info">
             <p>“The clinic is spotless and equipped with modern facilities. I received my results quickly, and the staff explained everything clearly.”</p>
 
@@ -488,8 +542,8 @@ Here’s what some of them have to say about their experience with our team.</p>
 
     <section id='contact'>
       <div className="contact-intro">
-        <h3>Fill Out The Form To Sign Up</h3>
-        <p>At OAR Medical Clinic, your health and comfort come first.
+        <h3 className='head' data-aos= "fade-up" data-aos-duration="2000" >Fill Out The Form To Sign Up</h3>
+        <p data-aos= "fade-up" data-aos-duration="2000" >At OAR Medical Clinic, your health and comfort come first.
 Whether you have a question, need medical advice, or want to book an appointment — we’re just a message away.</p>
       </div>
 
